@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Step09_event2.html</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/animate.css"/>
+	<style>
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+		}
+		.box-out{
+			animation: bounceOutRight 0.5s;
+		}
+	</style>
+</head>
+<body ng-controller="one">
+	<h3>마우스 이벤트 처리</h3>
+	<!--이벤트 객체를 전달 받고 싶으면 $event 를 명시해야 한다. -->
+	<div class="box" ng-mousemove="onMousemove($event)">
+		{{coord}}
+	</div>
+
+	<h3>키 이벤트 처리</h3>
+	<input type="text" ng-keyup="onKeyUp($event)" 
+					   ng-keydown=""
+					   ng-model="inputMsg" />
+	<ul>
+		<li ng-repeat="tmp in msgs" ng-click="onClicked($index)">
+			{{$index}}{{tmp.msg}}
+		</li>
+	</ul>
+
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-animate.js"></script>
+	<script src="js/jquery-3.3.1.js"></script>
+	<script>
+		var app=angular.module("myApp", ["ngAnimate"]);
+		app.controller("one", function($scope){
+			// mousemove 이벤트가 일어 날때 호출되는 함수
+			$scope.onMousemove = function(event){
+				// 좌표를 알고 싶으면
+				$scope.coord = event.offsetX + " : " + event.offsetY;
+			};
+
+			$scope.msgs = [];
+			$scope.onKeyUp = function(event) {
+				if(event.keyCode == 13) {
+					// 입력한 문자열을 object 에 담아서
+					var obj = {msg:$scope.inputMsg};
+
+					// 배열에 추가 하기
+					$scope.msgs.push(obj);
+
+					// 입력창 지우기
+					$scope.inputMsg="";
+				}
+			};
+
+			$scope.onClicked = function(index) {
+				$scope.msgs.splice(index,1);
+			};
+		});
+	</script>
+</body>
+</html>

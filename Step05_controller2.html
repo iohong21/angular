@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="kr" ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<title>Step05_controller2.html</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script src="js/angular.min.js"></script>
+	<script>
+		// "myApp" 이라는 이름의 모듈 만들기
+		var app=angular.module("myApp", []);
+
+		// 모듈의 참조값을 이용해서 "myCtrl" 이라는 이름의 컨트롤러 만들기
+		app.controller("myCtrl", function($scope){
+			// msgs 라는 이름의 배열 type 모델 만들기
+			$scope.msgs = ["하나","두울","세엣"];
+
+			// 추가 버튼을 눌렀을때 실행되는 함수
+			$scope.addClicked = function(){
+				// 입력한 문자열을 배열에 push(추가) 하기
+				$scope.msgs.push($scope.inputMsg);
+			};
+		});
+	</script>
+</head>
+<body>
+	<div ng-controller="myCtrl">
+		<h3>같은 문자열이 저장되면 오류발생(구조적 bug)</h3>
+		<input type="text" ng-model="inputMsg"/><button ng-click="addClicked()">추가</button>
+		<ul>
+			<li ng-repeat="tmp in msgs">{{tmp}}</li>
+		</ul>
+	</div>
+</body>
+</html>
+

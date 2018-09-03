@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="kr" ng-app>
+<head>
+	<meta charset="utf-8">
+	<title>Step06_showHide.html</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+<body>
+	<div class="container">
+		<h3>ng-show, ng-hide 디렉티브 사용하기</h3>
+		보이게 할지 여부 <input type="checkbox" ng-model="isShow" />
+		<p ng-show="isShow">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. At sit quisquam ad rem nisi saepe animi dolores, velit, voluptates eius, dolore suscipit id consequatur laudantium alias recusandae cupiditate vero eum.
+		</p>
+		숨길지 여부 <input type="checkbox" ng-model="isHide" />
+		<p ng-hide="isHide">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, modi, reprehenderit eveniet et fugiat atque assumenda accusantium eos vitae suscipit similique repellat sint cum esse dolores enim voluptates quas facilis.
+		</p>
+	</div>
+	<script src="js/angular.min.js"></script>
+</body>
+</html>
+

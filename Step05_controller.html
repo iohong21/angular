@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="kr" ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<title>Step05_controller.html</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script src="js/angular.min.js"></script>
+	<script>
+		// "myApp" 이라는 이름의 모듈 만들기
+		var app=angular.module("myApp", []);
+
+		// 모듈의 참조값을 이용해서 "myCtrl" 이라는 이름의 컨트롤러 만들기
+		app.controller("myCtrl", function($scope){
+			/* 
+				여기는 페이지가 로딩되는 시점에 실행순서가 1번 들어온다.
+			 	$scope는 "myCtrl" 이라는 컨트롤러가 관리하는 영역 객체 이다.
+			*/
+            $scope.myName = "SHong,.";
+            $scope.count=0;
+            $scope.btnClicked = function() {
+            	$scope.count++;
+            }
+		});
+
+		// "yourCtrl" 이라는 이름의 컨트롤러 만들기
+		app.controller("yourCtrl", function($scope){
+			$scope.myName = "원숭이";
+			$scope.count=0;
+			$scope.btnClicked = function() {
+            	$scope.count++;
+            }			
+		});
+
+	</script>
+</head>
+<body>
+	<div ng-controller="myCtrl">
+		<p>내 이름은: <strong>{{myName}}</strong></p>
+		<button ng-click="btnClicked()">{{count}}</button>
+	</div>
+	<div ng-controller="yourCtrl">
+		<p>내이름은: <strong>{{myName}}</strong></p>
+		<button ng-click="btnClicked()">{{count}}</button>
+	</div>
+</body>
+</html>
+

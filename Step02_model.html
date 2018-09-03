@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Step02_model.html</title>
+	<script src="js/angular.min.js"></script>
+</head>
+<body ng-app>
+	<input type="text" ng-model="msg"/>
+	<p>입력한 문자열: <strong>{{msg}}</strong></p>
+	<input type="checkbox" ng-model="isChecked" />
+	<p>체크 여부: <strong>{{isChecked}}</strong></p>
+	<p ng-show="isChecked">체크 박스를 체크 했네?</p>
+</body>
+</html>

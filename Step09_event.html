@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Step09_event.html</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+	<div class="container">
+		<button ng-click="msg='버튼 click!'"
+				ng-focus="msg='버튼 focus!'"
+				ng-blur="msg='버튼 blur!'"
+				ng-mouseenter="msg='버튼 mouseenter!'">클릭!</button>
+
+		<!-- ng-change 는 ng-model 을 지정해야 동작한다. -->
+		<input type="text" ng-model="inputMsg" 
+						   ng-change="msg=inputMsg"
+						   ng-focus="msg='input focus!'">
+		<p>{{msg}}</p>
+	</div>
+	<script src="js/angular.min.js"></script>
+</body>
+</html>

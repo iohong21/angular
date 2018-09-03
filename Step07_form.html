@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="utf-8">
+	<title>Step06_showHide.html</title>
+	<style>
+		form p {
+			color:red;
+		}
+	</style>
+	<!--
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	-->
+	<script src="js/angular.min.js"></script>
+</head>
+<body ng-app>
+	<h3>form 검증 상태 테스트</h3>
+	<!--
+		[ angularJs 로 form 검증]
+		1. form 에 name 속성을 부여한다.
+		2. novalidate 속성도 부여한다.
+		3. input 요소 model 을 지정한다.
+	-->
+	<form action="insertAction" method="post" name="myForm" novalidate>
+		아이디 <input type="text" name="id" ng-model="id" ng-required="true" />
+		<!--
+		<p ng-hide="myForm.id.$valid">아이디를 반드시 입력 하세요.</p>
+		<p ng-show="!myForm.id.$valid">아이디를 반드시 입력 하세요.</p>
+		-->
+		<p ng-show="myForm.id.$invalid && myForm.id.$dirty">아이디를 반드시 입력 하세요.</p>
+		<br />
+		비밀번호 <input type="text" name="pwd" ng-model="pwd" ng-required="true" ng-minlength="5" />
+		<p ng-show="myForm.pwd.$invalid && myForm.pwd.$dirty">비밀번호를 반드시 입력 하세요.</p>
+		<p ng-show="myForm.pwd.$error.minlength">비밀번호를 5글자 이상 입력 하세요.</p>
+		<br />
+		<button type="submit" ng-disabled="myForm.$invalid">가입</button>
+	</form>
+	<br/>
+	<p>폼전체의 유효성 여부</p>
+	<p>myForm.$valid=<strong>{{myForm.$valid}}</strong></p>
+	<p>폼전체의 유효하지 않은지 여부</p>
+	<p>myForm.$valid=<strong>{{myForm.$invalid}}</strong></p>
+	<p>아이디 입력란의 유효성 여부</p>
+	<p>myForm.id.$valid=<strong>{{myForm.id.$valid}}</strong></p>
+	<p>아이디 입력란의 유효하지 않은지 여부</p>
+	<p>myForm.id.$valid=<strong>{{myForm.id.$invalid}}</strong></p>
+	<p>아이디 입력란의 청결한지 여부(입력을 한번도 안한상태 인지 여부)</p>
+	<p>myForm.id.$pristine=<strong>{{myForm.id.$pristine}}</strong></p>
+	<p>아이디 입력란이 더럽혀졌었는지 여부(입력을 한적이 있는지 여부)</p>
+	<p>myForm.id.$dirty=<strong>{{myForm.id.$dirty}}</strong></p>
+	<p>비밀번호 입력란의 minlength 조건을 만족 시키지 못했는지 여부</p>
+	<p>myForm.pwd.$error.minlength=<strong>{{myForm.pwd.$error.minlength}}</strong></p>
+</body>
+</html>
+
